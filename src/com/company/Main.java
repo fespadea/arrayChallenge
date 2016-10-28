@@ -4,23 +4,31 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int in = 0;
+        int in;
+        String nam;
+        String names [] = new String[1000];
+        Scanner name = new Scanner(System.in);
         int count = 0;
-        String list = "";
-        while (in != -1){
+        int[] grades = new int[1000];
+        while (true){
+            System.out.print("Enter the name.");
+            nam = name.next();
+            System.out.print("Enter the grade.");
             in = input.nextInt();
-            list = list + " " + in;
+            if (in == -1 || count == 999)
+                break;
+            grades[count] = in;
+            names[count] = nam;
             count++;
-            int[] temp = new int[count];
-            temp[count - 1] = in;
-            if(in == -1) {
-                int[] grades = temp;
-                double average = 0;
-                for (int x = 0; x < grades.length; x++)
-                    average += grades[x];
-                average = average / grades.length;
-                System.out.println(average);
             }
+        System.out.print("Ok, you are now done entering stuff. ");
+        while(true) {
+            System.out.println("What do you want to access?");
+            Scanner access = new Scanner(System.in);
+            int lum = access.nextInt();
+            if(lum < 0 || lum >= count)
+                break;
+            System.out.println(names[lum] + ": " + grades[lum]);
         }
-}
+    }
 }
